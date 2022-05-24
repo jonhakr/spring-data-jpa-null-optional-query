@@ -1,0 +1,13 @@
+logging:
+  level:
+    org.hibernate:
+#      SQL: DEBUG # SQL output in logs (not neccessary for @DataJpaTest tests?)
+      type.descriptor.sql.BasicBinder: TRACE # Parameter binding of prepared statements (verbose!)
+spring:
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true # Pretty format of SQL logging
+  output:
+    ansi:
+      enabled: always
