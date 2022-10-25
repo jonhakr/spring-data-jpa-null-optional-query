@@ -17,6 +17,7 @@ class JediRepositoryTest(@Autowired private val jediRepository: JediRepository) 
         Jedi(1, "General Kenobi", "A bold one"),
         Jedi(2, "Anakin Skywalker", "Not a Jedi Master"),
         Jedi(3, "Mace Windu", "Purple Lightsaber"),
+        Jedi(4, "Yoda", null),
     ))
   }
 
@@ -58,7 +59,19 @@ class JediRepositoryTest(@Autowired private val jediRepository: JediRepository) 
   @Test
   fun `searchContains - handles optional (null) both`() {
     var result = jediRepository.searchContains(null, null)
-    assertThat(result.size).isEqualTo(3)
+    assertThat(result.size).isEqualTo(4)
+  }
+
+  @Test
+  fun `searchStartsWith - handles optional (null) both`() {
+    var result = jediRepository.searchStartsWith(null, null)
+    assertThat(result.size).isEqualTo(4)
+  }
+
+  @Test
+  fun `searchEndsWith - handles optional (null) both`() {
+    var result = jediRepository.searchEndsWith(null, null)
+    assertThat(result.size).isEqualTo(4)
   }
 
   @Test
